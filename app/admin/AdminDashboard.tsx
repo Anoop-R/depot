@@ -25,6 +25,16 @@ export default function AdminDashboard() {
   return (
     <main>
       <h1>Depot — status</h1>
+      <button 
+        onClick={async () => {
+          const res = await fetch('/api/init-db', { method: 'POST' });
+          const data = await res.json();
+          alert(JSON.stringify(data));
+        }}
+        style={{ marginBottom: 16, background: '#e8f5e9', border: '1px solid #4caf50' }}
+      >
+        Init Database (run once)
+      </button>
       {apps.map((app) => (
         <div className="row" key={app.key}>
           <div>
