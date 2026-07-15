@@ -43,7 +43,7 @@ export async function POST(req: NextRequest, { params }: { params: { app: string
     return html(loginFormHtml(key, true));
   }
   const token = await createSession(name);
-  const res = NextResponse.redirect(app.prodUrl);
+  const res = NextResponse.redirect(app.prodUrl, 303);
   res.cookies.set('depot_session', token, {
     httpOnly: true, maxAge: 60 * 60 * 24 * 7, path: '/', sameSite: 'lax',
   });
