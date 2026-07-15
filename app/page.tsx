@@ -1,25 +1,35 @@
 import { APPS } from '@/lib/apps';
 export default function Home() {
   return (
-    <main>
-      <h1>App portfolio</h1>
-      <p style={{ color: '#666', fontSize: 14 }}>
-        A set of hobby/side projects. Gated apps show a live demo on request.
-      </p>
-      <div className="grid">
+    <div className="depot-shell">
+      <div className="portfolio-header">
+        <div className="portfolio-title">App<span> portfolio</span></div>
+        <div className="portfolio-sub">
+          Hobby projects in mining tech, logistics, and AI tooling.
+          Gated apps are available on request.
+        </div>
+      </div>
+      <div className="portfolio-grid">
         {APPS.map((app) => (
-          <div className="card" key={app.key}>
-            <h2>{app.name}</h2>
-            <p>{app.description}</p>
-            <p className="stack">{app.techStack}</p>
-            {app.public ? (
-              <p><a href={app.prodUrl} target="_blank" rel="noreferrer">Live demo →</a></p>
-            ) : (
-              <p style={{ color: '#888' }}>Live demo available on request</p>
-            )}
+          <div className="portfolio-card" key={app.key}>
+            <div className="portfolio-card-name">{app.name}</div>
+            <div className="portfolio-card-desc">{app.description}</div>
+            <div className="portfolio-card-stack">{app.techStack}</div>
+            <div className="portfolio-card-footer">
+              {app.public && app.prodUrl ? (
+                <a href={app.prodUrl} target="_blank" rel="noreferrer"
+                  style={{ fontSize: 13, fontWeight: 500 }}>
+                  Live demo →
+                </a>
+              ) : (
+                <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+                  Available on request
+                </span>
+              )}
+            </div>
           </div>
         ))}
       </div>
-    </main>
+    </div>
   );
 }
