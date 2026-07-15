@@ -5,6 +5,7 @@ export interface AppConfig {
   techStack: string;
   prodUrl: string;
   healthPath?: string;
+  healthUrl?: string;
   renderServiceId?: string;
   deployHookUrl?: string;
   requiresBackend: boolean;
