@@ -18,6 +18,7 @@ export const APPS: AppConfig[] = [
     description: 'Full-stack mining geology file viewer — 3D visualization, multi-format parsers, AI-assisted QC.',
     techStack: 'React, Vite, Three.js, Express, TypeScript',
     prodUrl: process.env.APP_URL_STRATUM || '',
+    healthUrl: process.env.HEALTH_URL_STRATUM || process.env.APP_URL_STRATUM || '',
     renderServiceId: process.env.RENDER_SERVICE_ID_STRATUM,
     deployHookUrl: process.env.RENDER_HOOK_STRATUM,
     requiresBackend: true,
@@ -68,5 +69,6 @@ export function getApp(key: string) {
 }
 
 export function getHealthUrl(app: AppConfig) {
-  return `${app.prodUrl.replace(/\/$/, '')}${app.healthPath || '/health'}`;
+  const url = app.healthUrl || app.prodUrl;
+  return `${url.replace(/\/$/, '')}${app.healthPath || '/health'}`;
 }
