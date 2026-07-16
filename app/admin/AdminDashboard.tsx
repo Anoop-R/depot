@@ -113,6 +113,7 @@ export default function AdminDashboard() {
                 onClick={() => action(app.key, 'suspend')}>
                 Suspend
               </button>
+              <a className="btn btn-edit" href={`/ai/${app.key}`}>Edit</a>
             </div>
           </div>
         ))}
